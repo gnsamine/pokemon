@@ -86,7 +86,7 @@ func GetSprites() {
 }
 
 func GetPNG() {
-	resp, err := http.Get("https://pokeapi.co/api/v2/type/ghost/")
+	resp, err := http.Get("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10233.png")
 	if err != nil {
 		fmt.Println(err)
 	}
