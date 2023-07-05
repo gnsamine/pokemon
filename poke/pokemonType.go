@@ -84,3 +84,16 @@ func GetSprites() {
 	}
 
 }
+
+func GetPNG() {
+	resp, err := http.Get("https://pokeapi.co/api/v2/type/ghost/")
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	body, err := io.ReadAll(resp.Body)
+	if err != nil {
+		fmt.Println(err)
+	}
+	fmt.Println(body)
+}

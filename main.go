@@ -5,6 +5,7 @@ import (
 )
 
 func main() {
-	poke.GetSprites()
-
+	//poke.GetSprites()
+	//poke.GetUrLs(poke.GetSprites().front_default)
+	poke.GetPNG()
 }
