@@ -14,7 +14,9 @@ type Pokemon struct {
 			URL  string `json:"url"`
 		} `json:"pokemon"`
 	} `json:"pokemon"`
+}
 
+type Pokemon2 struct {
 	Sprites struct {
 		BackDefault      string      `json:"back_default"`
 		BackFemale       interface{} `json:"back_female"`
@@ -55,11 +57,29 @@ func GetSprites() {
 	json.Unmarshal([]byte(stringBody), &p)
 
 	fmt.Println("Names of Ghost Pokemons")
+
 	for i := 0; i < len(p.Pokemon); i++ {
 		fmt.Println(p.Pokemon[i].Pokemon.Name)
 
-		// 	// we use "var data map[string]interface{}"
-		// 	//bc values can be of any type with interface{}
+	}
+
+	fmt.Println("Front DEfoult Sprites of Ghost Pokemons")
+
+	for i := 0; i < len(p.Pokemon); i++ {
+
+		a := fmt.Sprintf("http://pokeapi.co/api/v2/pokemon/%s", p.Pokemon[i].Pokemon.Name)
+		//fmt.Println(a)
+
+		resp, _ := http.Get(a)
+
+		body, _ := io.ReadAll(resp.Body)
+
+		stringBody := string(body)
+
+		var s Pokemon2
+		json.Unmarshal([]byte(stringBody), &s)
+
+		fmt.Println(s.Sprites.FrontDefault)
 
 	}
 
