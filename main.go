@@ -5,6 +5,6 @@ import (
 )
 
 func main() {
-	poke.GetNames()
+	poke.GetSprites()
 
 }
