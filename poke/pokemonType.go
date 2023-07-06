@@ -1,11 +1,13 @@
 package poke
 
 import (
+	"bytes"
 	"encoding/json"
 	"fmt"
 	"io"
 	"net/http"
 	"os"
+	"unsafe"
 )
 
 type Pokemon struct {
@@ -30,18 +32,6 @@ type Pokemon2 struct {
 	} `json:"sprites"`
 }
 
-//func GetNames() {
-// jsonData := SampleData
-
-// var p Pokemon
-// json.Unmarshal([]byte(jsonData), &p)
-
-// fmt.Println("Names of Ghost Pokemons")
-// for i := 0; i < len(p.Pokemon); i++ {
-// 	fmt.Println(p.Pokemon[i].Pokemon.Name)
-// }
-//}
-
 func GetSprites() {
 	resp, err := http.Get("https://pokeapi.co/api/v2/type/ghost/")
 	if err != nil {
@@ -52,24 +42,17 @@ func GetSprites() {
 		fmt.Println(err)
 	}
 	stringBody := string(body)
-	//fmt.Println(stringBody)
 
 	var p Pokemon
 	json.Unmarshal([]byte(stringBody), &p)
 
 	fmt.Println("Names of Ghost Pokemons")
 
-	for i := 0; i < len(p.Pokemon); i++ {
-		fmt.Println(p.Pokemon[i].Pokemon.Name)
-
-	}
-
-	fmt.Println("Front DEfoult Sprites of Ghost Pokemons")
+	fmt.Println("Front Default Sprites of Ghost Pokemons")
 
 	for i := 0; i < len(p.Pokemon); i++ {
 
 		a := fmt.Sprintf("http://pokeapi.co/api/v2/pokemon/%s", p.Pokemon[i].Pokemon.Name)
-		//fmt.Println(a)
 
 		resp, _ := http.Get(a)
 
@@ -82,33 +65,26 @@ func GetSprites() {
 
 		fmt.Println(s.Sprites.FrontDefault)
 
-		fileName := p.Pokemon[i].Pokemon.Name + ".png"
+		resp2, _ := http.Get(s.Sprites.FrontDefault)
+
+		body2, _ := io.ReadAll(resp2.Body)
+
+		body2byte := *(*[]byte)(unsafe.Pointer(&body2))
+
+		fileName := "images/" + p.Pokemon[i].Pokemon.Name + ".png"
+
 		file, _ := os.Create(fileName)
 		if err != nil {
 			fmt.Println(err)
 		}
-
 		defer file.Close()
-		_, err = io.Copy(file, resp.Body)
+		body2Reader := bytes.NewReader(body2byte)
+		_, err = io.Copy(file, body2Reader)
 		if err != nil {
 			fmt.Println(err)
 
 		}
+
 	}
 
 }
-
-// func GetPNG() {
-
-// 	resp, err := http.Get("https://pokeapi.co/api/v2/type/ghost/")
-// 	if err != nil {
-// 		fmt.Println(err)
-// 	}
-
-// 	body, err := io.ReadAll(resp.Body)
-// 	if err != nil {
-// 		fmt.Println(err)
-// 	}
-// 	fmt.Println(body)
-
-//}

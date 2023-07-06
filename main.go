@@ -5,5 +5,4 @@ import "example.com/gnsamine/pokemon/poke"
 func main() {
 
 	poke.GetSprites()
-
 }
