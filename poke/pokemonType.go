@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"os"
 )
 
 type Pokemon struct {
@@ -81,19 +82,33 @@ func GetSprites() {
 
 		fmt.Println(s.Sprites.FrontDefault)
 
+		fileName := p.Pokemon[i].Pokemon.Name + ".png"
+		file, _ := os.Create(fileName)
+		if err != nil {
+			fmt.Println(err)
+		}
+
+		defer file.Close()
+		_, err = io.Copy(file, resp.Body)
+		if err != nil {
+			fmt.Println(err)
+
+		}
 	}
 
 }
 
-func GetPNG() {
-	resp, err := http.Get("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10233.png")
-	if err != nil {
-		fmt.Println(err)
-	}
+// func GetPNG() {
 
-	body, err := io.ReadAll(resp.Body)
-	if err != nil {
-		fmt.Println(err)
-	}
-	fmt.Println(body)
-}
+// 	resp, err := http.Get("https://pokeapi.co/api/v2/type/ghost/")
+// 	if err != nil {
+// 		fmt.Println(err)
+// 	}
+
+// 	body, err := io.ReadAll(resp.Body)
+// 	if err != nil {
+// 		fmt.Println(err)
+// 	}
+// 	fmt.Println(body)
+
+//}
