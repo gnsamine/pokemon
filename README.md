@@ -10,13 +10,13 @@ To get started with the Pokémon Sprite Downloader, follow these steps:
 1. Clone the repository:
    ```bash
    git clone https://github.com/your-username/pokemon-sprite-downloader.git
-2.Navigate to the project directory:
+2. Navigate to the project directory:
 cd pokemon-sprite-downloader
 
-3.Install the required dependencies:
+3. Install the required dependencies:
     go get -u github.com/gnsamine/pokemon/poke
 
-4.Run the program:
+4. Run the program:
     go run main.go
 
 
