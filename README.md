@@ -19,8 +19,8 @@ cd pokemon-sprite-downloader
 4. Run the program:
     go run main.go
 
+# Usage
 
-#Usage
 The program utilizes the PokeAPI to retrieve the list of Ghost-type Pokémon and their respective sprites. It performs the following steps:
 
 Fetches the list of Ghost-type Pokémon from the PokeAPI.
@@ -28,7 +28,7 @@ Iterates through each Pokémon in the list.
 Retrieves the URL of the front default sprite for each Pokémon.
 Downloads the sprite image and saves it as a PNG file in the images/ directory.
 
-#Contributing
+# Contributing
 Contributions to the Pokémon Sprite Downloader project are welcome! If you would like to contribute, please follow these steps:
 
 Fork the repository.
@@ -38,7 +38,8 @@ Commit your changes and push them to your forked repository.
 Submit a pull request, describing your changes in detail.
 Please ensure that your contributions adhere to the project's coding conventions and follow good software development practices.
 
-#License
+# License
+
 This project is licensed under the MIT License.
 Make sure to replace "your-username" in the repository URL (`https://github.com/your-username/pokemon-sprite-downloader.git`) with your actual GitHub username or the appropriate repository URL.
 Feel free to customize the README file further with additional sections, examples, or details based on your project's requirements and specific features.
