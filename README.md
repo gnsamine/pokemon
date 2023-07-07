@@ -1,5 +1,5 @@
-# pokemon
-Ghost-type Pokémon Sprite Downloader.
+# Ghost-type Pokémon Sprite Downloader
+
 
 This Go program allows you to fetch the names and front-default sprites of Ghost-type Pokémon from the PokeAPI and save the front-default sprites as PNG images.
 
