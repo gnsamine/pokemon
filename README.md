@@ -9,7 +9,7 @@ To get started with the Pokémon Sprite Downloader, follow these steps:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/pokemon-sprite-downloader.git
+   git clone https://github.com/gnsamine/pokemon.git
 2. Navigate to the project directory:
 cd pokemon-sprite-downloader
 
@@ -41,5 +41,3 @@ Please ensure that your contributions adhere to the project's coding conventions
 # License
 
 This project is licensed under the MIT License.
-Make sure to replace "your-username" in the repository URL (`https://github.com/your-username/pokemon-sprite-downloader.git`) with your actual GitHub username or the appropriate repository URL.
-Feel free to customize the README file further with additional sections, examples, or details based on your project's requirements and specific features.
