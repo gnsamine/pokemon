@@ -61,6 +61,7 @@ func GetSprites() {
 		stringBody := string(body)
 
 		var s Pokemon2
+
 		json.Unmarshal([]byte(stringBody), &s)
 
 		fmt.Println(s.Sprites.FrontDefault)
