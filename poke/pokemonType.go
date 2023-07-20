@@ -48,6 +48,9 @@ func GetSprites() {
 
 	fmt.Println("Names of Ghost Pokemons")
 
+	for i := 0; i < len(p.Pokemon); i++ {
+		fmt.Println(p.Pokemon[i].Pokemon.Name)
+	}
 	fmt.Println("Front Default Sprites of Ghost Pokemons")
 
 	for i := 0; i < len(p.Pokemon); i++ {
